@@ -1,0 +1,10 @@
+#board{
+	display: grid;
+	grid-auto-rows: 5px;
+	grid-auto-column: 5px;
+	grid-gap: 1px;
+}
+
+.cell{
+	background-color: #689;
+}
