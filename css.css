@@ -3,6 +3,8 @@
 	grid-auto-rows: 5px;
 	grid-auto-column: 5px;
 	grid-gap: 1px;
+	width: 800px;
+        height: 800px;
 }
 
 .cell{

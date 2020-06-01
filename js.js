@@ -1,10 +1,37 @@
 
 width = 100;
 height = 100;
-var space = new	Array(height);
-var spaceCp = new Array(height);
+var space;
+var spaceCp;
 board = document.getElementById('board');
-board.style['grid-template-columns']= 'repeat(' + width +', 1fr)';
+
+function drawBoard(){	
+	width = parseInt(document.getElementById("width").value);
+	height = parseInt(document.getElementById("height").value);
+	space = new	Array(height);
+	spaceCp = new Array(height);
+	board.innerHTML = '';	
+	board.style['grid-template-columns']= 'repeat(' + width +', 1fr)';
+	board.style['grid-template-rows']= 'repeat(' + width +', 1fr)';
+	for ( i=0; i < height; i++){
+		space[i]= new Array(width)
+		spaceCp[i]= new Array(width)
+		space[i]= new Array(width).fill(0);
+		spaceCp[i]= new Array(width).fill(0);
+	}
+	for (i=0; i < height; i++)
+	{
+		for(j=0; j<width; j++)
+		{
+			var cell = document.createElement("div");
+			cell.id = i* width + j ;
+			cell.className = "cell";
+			cell.setAttribute("onclick","reverseCell(this);");
+			board.appendChild(cell);
+		}
+	}
+
+}
 
 function copySpace(){
 	for (i = 1; i< height-1; i++){
@@ -15,8 +42,8 @@ function copySpace(){
 }
 function reverseCell(inp)
 {
-	x = inp.id % 100;
-	y = Math.floor(inp.id / 100);
+	x = inp.id % width;
+	y = Math.floor(inp.id / width);
 	if (space[y][x] == 0){
 		space[y][x] = 1;
 		inp.style['background-color'] = "#ff0";
@@ -48,22 +75,4 @@ function timeLoop(){
 	}
 }
 
-for ( i=0; i < height; i++){
-	space[i]= new Array(width)
-	spaceCp[i]= new Array(width)
-	space[i]= new Array(width).fill(0);
-	spaceCp[i]= new Array(width).fill(0);
-}
-for (i=0; i < height; i++)
-{
-	for(j=0; j<width; j++)
-	{
-		var cell = document.createElement("div");
-		cell.id = i* width + j ;
-		cell.className = "cell";
-		//cell.addEventListener('click',reverseCell);
-		cell.setAttribute("onclick","reverseCell(this);");
-		board.appendChild(cell);
-	}
-}
-
+drawBoard();
