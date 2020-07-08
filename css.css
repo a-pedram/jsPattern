@@ -1,12 +1,18 @@
 #board{
+    position: relative;
 	display: grid;
-	grid-auto-rows: 5px;
-	grid-auto-column: 5px;
 	grid-gap: 1px;
 	width: 800px;
         height: 800px;
 }
 
 .cell{
-	background-color: #689;
+    box-sizing: border-box;
+	background-color: #04f;
+    position: absolute;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+.numbers{
+	width:50px
 }

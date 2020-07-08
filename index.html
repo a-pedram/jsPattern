@@ -3,10 +3,14 @@
 		<link rel="stylesheet" href="css.css" type="text/css">
 	</head>
 	<body>
-	<input type="button" value="Start" onclick="timeLoop();">
-	width:<input type="text" value="100" id="width">
-	height:<input type="text" value="100" id="height">
+	width:<input type="number" value="100" id="width"  class="numbers" >
+	height:<input type="number" value="100" class="numbers" id="height">
 	<input type="button" value="Redraw the board" onclick="drawBoard();">
+	<br>
+	Die if num of neighbors &gt <input type="number" value="3" onchange="updateRule();" class="numbers" id="dieMax">
+	Born if num of neighbors &gt <input type="number" value="1" onchange="updateRule();" class="numbers" id="bornMin"> 
+	and &lt <input type="number" value="2" onchange="updateRule()" class="numbers" id="bornMax">
+	<input type="button" value="Start" onclick="timeLoop();">
 	<div id="board">
 
 	</div>
