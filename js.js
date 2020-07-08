@@ -6,23 +6,24 @@ var spaceCp;
 board = document.getElementById('board');
 var bornMin=1, bornMax=3, dieMax=2;
 var cellSize, cellSizeP;
+var intId;
 drawBoard();
 
 function drawBoard(){	
 	width = parseInt(document.getElementById("width").value);
 	height = parseInt(document.getElementById("height").value);
-    bHeight =  window.innerHeight-board.offsetTop;
-    if (window.innerWidth > bHeight){
-        board.style["width"] = bHeight + 'px';
-        board.style["height"] = bHeight+ 'px';
-        cellSize = window.innerHeight / height  ;
-        }
-    else{
-        board.style["width"] = window.innerWidth + 'px';
-        board.style["height"] = window.innerWidth + 'px';
-        cellSize = window.innerWidth / width  ;
-        }
-    cellSizeP = cellSize + 'px';
+	bHeight =  window.innerHeight-4*board.offsetTop;
+	if (window.innerWidth > bHeight){
+		board.style["width"] = bHeight + 'px';
+		board.style["height"] = bHeight+ 'px';
+		cellSize = window.innerHeight / height  ;
+	}
+	else{
+		board.style["width"] = window.innerWidth + 'px';
+		board.style["height"] = window.innerWidth + 'px';
+		cellSize = window.innerWidth / width  ;
+	}
+	cellSizeP = cellSize + 'px';
 	space = new	Array(height);
 	spaceCp = new Array(height);
 	board.innerHTML = '';	
@@ -80,7 +81,7 @@ function reverseCell(inp)
 	}
 }
 
-function timeLoop(){
+function nextStep(){
 	copySpace();
 	for (i = 1; i< height-1; i++){
 		for (j = 1; j< width-1; j++){
@@ -101,4 +102,11 @@ function timeLoop(){
 	}
 }
 
-drawBoard();
+function play(){
+	intv = document.getElementById("interval").value;
+	intId = setInterval(nextStep, intv);
+}
+
+function stop(){
+	clearInterval(intId);
+}
