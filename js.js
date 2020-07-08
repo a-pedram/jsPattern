@@ -12,19 +12,19 @@ drawBoard();
 function drawBoard(){	
 	width = parseInt(document.getElementById("width").value);
 	height = parseInt(document.getElementById("height").value);
-	bHeight =  window.innerHeight-4*board.offsetTop;
+	bHeight =  window.innerHeight-board.offsetTop -10;
 	if (window.innerWidth > bHeight){
 		board.style["width"] = bHeight + 'px';
 		board.style["height"] = bHeight+ 'px';
-		cellSize = window.innerHeight / height  ;
+		cellSize = bHeight / height  ;
 	}
 	else{
 		board.style["width"] = window.innerWidth + 'px';
 		board.style["height"] = window.innerWidth + 'px';
-		cellSize = window.innerWidth / width  ;
+		cellSize = bHeight / width  ;
 	}
 	cellSizeP = cellSize + 'px';
-	space = new	Array(height);
+	space = new Array(height);
 	spaceCp = new Array(height);
 	board.innerHTML = '';	
 //	board.style['grid-template-columns']= 'repeat(' + width +', 1fr)';
@@ -109,4 +109,15 @@ function play(){
 
 function stop(){
 	clearInterval(intId);
+}
+
+function justDraw()
+{
+	stop();
+	drawBoard();
+	space[1][1]=1;
+	space[height-2][width-2]=1;
+	space[1][width-2]=1;
+	space[height-2][1]=1;
+	play();
 }

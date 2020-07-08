@@ -3,15 +3,19 @@
 		<link rel="stylesheet" href="css.css" type="text/css">
 	</head>
 	<body>
-	width:<input type="number" value="100" id="width"  class="numbers" >
+	<h2>A cellular automata pattern generator. </h2>
+	<p>(source code on <a href="https://github.com/a-pedram/jsPattern">github</a> by <a href="http://mehdipedram.com">Mehdi Pedram</a>)</p>
+	Click on the board to change the color of points and then click on the "Next" button to see what happens, you can also change the rules breeding and dying of the points
+or just <input type="button" value="Draw something!" onclick="justDraw();"> <br>
+  	<b>Board:</b> width:<input type="number" value="100" id="width"  class="numbers" >
 	height:<input type="number" value="100" class="numbers" id="height">
 	<input type="button" value="Redraw the board" onclick="drawBoard();">
 	<br>
-	Die if num of neighbors &gt <input type="number" value="3" onchange="updateRule();" class="numbers" id="dieMax">
+	<b>Rules:</b> Die if num of neighbors &gt <input type="number" value="3" onchange="updateRule();" class="numbers" id="dieMax">
 	Born if num of neighbors &gt <input type="number" value="1" onchange="updateRule();" class="numbers" id="bornMin"> 
 	and &lt <input type="number" value="2" onchange="updateRule()" class="numbers" id="bornMax">
 	<br>
-	Run: <input type="button" value="Next" onclick="nextStep();">
+	<b>Run:</b> <input type="button" value="Next" onclick="nextStep();">
 	Auto play: interval: <input type="number" id="interval" value="1000"class="numbers"> in milisconds
 	<input type="button" value="Play" onclick="play()" >
 	<input type="button" value="Stop" onclick="stop()" >
